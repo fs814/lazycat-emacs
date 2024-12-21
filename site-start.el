@@ -15,9 +15,9 @@
                    ;; 不是目录的文件都移除
                    (not (file-directory-p (concat dir subdir)))
                    ;; 父目录、 语言相关和版本控制目录都移除
-                   (member subdir '("." ".." 
-                                    "dist" "node_modules" "__pycache__" 
-                                    "RCS" "CVS" "rcs" "cvs" ".git" ".github")))) 
+                   (member subdir '("." ".."
+                                    "dist" "node_modules" "__pycache__"
+                                    "RCS" "CVS" "rcs" "cvs" ".git" ".github"))))
               (directory-files dir)))
       (let ((subdir-path (concat dir (file-name-as-directory subdir))))
         ;; 目录下有 .el .so .dll 文件的路径才添加到 `load-path' 中，提升Emacs启动速度
@@ -34,6 +34,6 @@
         ;; 继续递归搜索子目录
         (add-subdirs-to-load-path subdir-path)))))
 
-(add-subdirs-to-load-path "/usr/share/emacs/lazycat")
+(add-subdirs-to-load-path "C:/sourcecode/emacsconf/lazycat-emacs")
 
 (require 'init)
