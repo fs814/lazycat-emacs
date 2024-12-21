@@ -47,6 +47,11 @@
     (require 'basic-toolkit)
     (require 'redo)
 
+    (require 'init-fscore)
+    (require 'init-fscore-os)
+    (require 'init-fscore-packages)
+    (require 'init-fscore-keybinds)
+
     (require 'init-highlight-parentheses)
     (require 'init-awesome-tray)
     (require 'init-line-number)
@@ -65,6 +70,7 @@
     (require 'init-key-echo)
 
     (require 'init-evil)
+    (require 'init-fsdir)
 
     ;; 可以延后加载的
     (run-with-idle-timer
