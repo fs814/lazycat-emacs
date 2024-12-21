@@ -64,6 +64,8 @@
     (require 'init-treesit)
     (require 'init-key-echo)
 
+    (require 'init-evil)
+
     ;; 可以延后加载的
     (run-with-idle-timer
      1 nil

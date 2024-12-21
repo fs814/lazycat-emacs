@@ -411,3 +411,6 @@ url = https://github.com/manateelazycat/reorder-file
 [submodule "site-lisp/extensions/image-slicing"]
 	path = site-lisp/extensions/image-slicing
 	url = https://github.com/ginqi7/image-slicing.git
+[submodule "evil"]
+	path = evil
+	url = https://github.com/emacs-evil/evil.git
