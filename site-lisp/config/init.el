@@ -71,6 +71,7 @@
 
     (require 'init-evil)
     (require 'init-fsdir)
+    (require 'init-fsconf)
 
     ;; 可以延后加载的
     (run-with-idle-timer
