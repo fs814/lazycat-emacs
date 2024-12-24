@@ -34,6 +34,15 @@
         ;; 继续递归搜索子目录
         (add-subdirs-to-load-path subdir-path)))))
 
-(add-subdirs-to-load-path "C:/sourcecode/emacsconf/lazycat-emacs")
+(cond ((eq system-type 'windows-nt)
+        (add-subdirs-to-load-path "C:/sourcecode/emacsconf/lazycat-emacs")
+        )
+      ((eq system-type 'darwin)
+        (add-subdirs-to-load-path (expand-file-name "~/sourcecode/emacsconf/lazycat-emacs"))
+        )
+      ((eq system-type 'gnu/linux)
+        (add-subdirs-to-load-path (expand-file-name "~/sourcecode/emacsconf/lazycat-emacs"))
+        )
+  )
 
 (require 'init)
