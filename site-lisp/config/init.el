@@ -36,7 +36,7 @@
     (require 'init-generic)
     (require 'lazycat-theme)
     (lazycat-theme-load-with-sunrise)
-    ;; (lazycat-theme-load-dark)
+    (lazycat-theme-load-dark)
     ;; (lazycat-theme-load-light)
     (when (featurep 'cocoa)
       (require 'cache-path-from-shell))
@@ -66,9 +66,13 @@
     (require 'init-isearch-mb)
     (require 'init-performance)
     (require 'init-rime)
-    (require 'init-treesit)
+    (if (not (eq system-type 'darwin))
+        (require 'init-treesit)
+        )
     (require 'init-key-echo)
-    ;;(require 'init-emigo)
+    (if (not (eq system-type 'darwin))
+        (require 'init-emigo)
+        )
 
     (require 'init-evil)
     (require 'init-fsdir)
@@ -101,8 +105,10 @@
          (trekker-enable)
 
          ;; Restore session at last.
-         (require 'init-session)
-         (emacs-session-restore)
+         (if (not (eq system-type 'darwin))
+            (progn (require 'init-session)
+                (emacs-session-restore))
+            )
 
          (require 'init-sort-tab)
 

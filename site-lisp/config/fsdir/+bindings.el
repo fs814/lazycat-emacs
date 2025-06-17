@@ -53,6 +53,15 @@
 )
 "open-directory")
 
+(global-unset-key (kbd "C-x O"))
+(global-unset-key [f1])
+
+(global-set-key (kbd "C-c") 'evil-normal-state)
+(global-set-key (kbd "C-h") 'windmove-left)
+(global-set-key (kbd "C-l") 'windmove-right)
+(global-set-key (kbd "C-j") 'windmove-down)
+(global-set-key (kbd "C-k") 'windmove-up)
+
 (map!
  "C-x O a" #'+fsdir/open-arttools-dir
  "C-x O b" #'+fsdir/open-blender-dir
