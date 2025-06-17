@@ -47,6 +47,11 @@
     (require 'basic-toolkit)
     (require 'redo)
 
+    (require 'init-fscore)
+    (require 'init-fscore-os)
+    (require 'init-fscore-packages)
+    (require 'init-fscore-keybinds)
+
     (require 'init-highlight-parentheses)
     (require 'init-awesome-tray)
     (require 'init-line-number)
@@ -63,7 +68,10 @@
     (require 'init-rime)
     (require 'init-treesit)
     (require 'init-key-echo)
-    (require 'init-emigo)
+    ;;(require 'init-emigo)
+
+    (require 'init-evil)
+    (require 'init-fsdir)
 
     ;; 可以延后加载的
     (run-with-idle-timer
@@ -97,6 +105,8 @@
          (emacs-session-restore)
 
          (require 'init-sort-tab)
+
+         (require 'init-fsprivate)
          ))))
 
 (provide 'init)
