@@ -426,3 +426,6 @@ url = https://github.com/ethereum/emacs-solidity.git
 path = site-lisp/extensions/emigo
 url = https://github.com/MatthewZMD/emigo.git
 
+[submodule "evil"]
+path = evil
+url = https://github.com/emacs-evil/evil.git
