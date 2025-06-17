@@ -47,5 +47,6 @@
 
 (add-subdirs-to-load-path "/Users/fs814/sourcecode/emacsconf/lazycat-emacs/")
 (setq python-shell-interpreter "/opt/homebrew/opt/python@3.13/bin/python3")
+;;(if (not (eq system-type 'darwin))
 
 (require 'init)
