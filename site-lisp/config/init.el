@@ -52,6 +52,7 @@
     (require 'init-fscore-packages)
     (require 'init-fscore-keybinds)
 
+    (require 'init-key-echo)
     (require 'init-highlight-parentheses)
     (require 'init-awesome-tray)
     (require 'init-line-number)
@@ -69,7 +70,6 @@
     (if (not (eq system-type 'darwin))
         (require 'init-treesit)
         )
-    (require 'init-key-echo)
     (if (not (eq system-type 'darwin))
         (require 'init-emigo)
         )
@@ -95,14 +95,13 @@
          (require 'init-idle)
          (require 'init-markdown-mode)
          (require 'init-olivetti)
-         (require 'init-holo-layer)
 
-         (require 'init-eaf)
+         (unless (eq window-system 'pgtk)
+           (require 'init-holo-layer)
+           (require 'init-eaf))
+
          (require 'init-popweb)
          (require 'init-eww)
-
-         (require 'trekker)
-         (trekker-enable)
 
          ;; Restore session at last.
          (if (not (eq system-type 'darwin))
