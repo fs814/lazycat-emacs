@@ -429,3 +429,9 @@ url = https://github.com/MatthewZMD/emigo.git
 [submodule "evil"]
 path = evil
 url = https://github.com/emacs-evil/evil.git
+[submodule "site-lisp/extensions/aider"]
+	path = site-lisp/extensions/aider
+	url = https://github.com/tninja/aider.el.git
+[submodule "site-lisp/extensions/interaction-log"]
+	path = site-lisp/extensions/interaction-log
+	url = https://github.com/michael-heerdegen/interaction-log.el
