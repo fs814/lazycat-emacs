@@ -78,6 +78,7 @@
     (require 'init-fsdir)
     (require 'init-keymappings)
     (require 'init-dape)
+    (require 'init-fsai)
 
     ;; 可以延后加载的
     (run-with-idle-timer

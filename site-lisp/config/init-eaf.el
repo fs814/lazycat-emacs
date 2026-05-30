@@ -187,6 +187,20 @@
 (eaf-bind-key scroll_down "M-." eaf-pyqterminal-keybinding)
 (eaf-bind-key eaf-open-in-file-manager "M-j" eaf-pyqterminal-keybinding)
 
+;; Pass C-h/j/k/l through to Emacs for window navigation
+(eaf-bind-key evil-window-left "C-h" eaf-pyqterminal-keybinding)
+(eaf-bind-key evil-window-down "C-j" eaf-pyqterminal-keybinding)
+(eaf-bind-key evil-window-up "C-k" eaf-pyqterminal-keybinding)
+(eaf-bind-key evil-window-right "C-l" eaf-pyqterminal-keybinding)
+;; Pass C-g through to Emacs for keyboard-quit
+(eaf-bind-key keyboard-quit "C-g" eaf-pyqterminal-keybinding)
+;; Pass C-w through to evil window commands (C-w v, C-w s, etc.)
+(defun eaf-evil-window-prefix ()
+  "Activate evil-window-map so the next key dispatches a window command."
+  (interactive)
+  (set-transient-map evil-window-map))
+(eaf-bind-key eaf-evil-window-prefix "C-w" eaf-pyqterminal-keybinding)
+
 (defun eaf-open-terminal ()
   "Try to open fish if fish exist, otherwise use default shell."
   (interactive)
