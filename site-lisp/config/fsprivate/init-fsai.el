@@ -89,6 +89,48 @@
   (interactive)
   (aidermacs-start))
 
+;;; Agent-shell prompt actions
+(defun +ai/agent-prompt (prompt-text)
+  "Send the current region with PROMPT-TEXT to agent-shell."
+  (let* ((shell-buffer (agent-shell--shell-buffer :no-error t :no-create t))
+         (region-context (agent-shell--get-region-context
+                          :deactivate t
+                          :agent-cwd (when shell-buffer
+                                       (with-current-buffer shell-buffer
+                                         (agent-shell-cwd))))))
+    (unless shell-buffer
+      (agent-shell))
+    (setq shell-buffer (agent-shell--shell-buffer :no-error t))
+    (agent-shell-insert
+     :text (concat prompt-text "\n\n" region-context)
+     :submit t
+     :shell-buffer shell-buffer)))
+
+(defun +ai/explain-code ()
+  "Explain selected code via agent-shell."
+  (interactive)
+  (+ai/agent-prompt "请解释选中的代码，说明其功能和逻辑"))
+
+(defun +ai/add-comments ()
+  "Add comments/docs to selected code via agent-shell."
+  (interactive)
+  (+ai/agent-prompt "请为选中的代码补全注释和文档"))
+
+(defun +ai/optimize-code ()
+  "Optimize selected code via agent-shell."
+  (interactive)
+  (+ai/agent-prompt "请优化选中的代码，提升可读性和性能"))
+
+(defun +ai/generate-tests ()
+  "Generate unit tests for selected code via agent-shell."
+  (interactive)
+  (+ai/agent-prompt "请为选中的代码生成单元测试"))
+
+(defun +ai/find-bugs ()
+  "Find bugs in selected code via agent-shell."
+  (interactive)
+  (+ai/agent-prompt "请定位选中代码中的潜在缺陷和问题"))
+
 ;;; Evil keybindings
 (with-eval-after-load 'evil
   (evil-define-key 'normal 'global
@@ -102,7 +144,13 @@
     (kbd ",ar") #'gptel-rewrite
     (kbd ",aAs") #'agent-shell
     (kbd ",aAc") #'agent-shell-codebuddy-start-agent
-    (kbd ",aAg") #'agent-shell-google-start-gemini))
+    (kbd ",aAg") #'agent-shell-google-start-gemini)
+  (evil-define-key 'visual 'global
+    (kbd ",aAE") #'+ai/explain-code
+    (kbd ",aAD") #'+ai/add-comments
+    (kbd ",aAO") #'+ai/optimize-code
+    (kbd ",aAT") #'+ai/generate-tests
+    (kbd ",aAF") #'+ai/find-bugs))
 
 (provide 'init-fsai)
 ;;; init-fsai.el ends here
