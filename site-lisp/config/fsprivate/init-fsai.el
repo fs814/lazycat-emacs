@@ -6,6 +6,9 @@
 ;;; Require
 (require 'gptel nil t)
 (require 'gptel-curl nil t)
+(require 'shell-maker nil t)
+(require 'acp nil t)
+(require 'agent-shell nil t)
 
 ;;; Code:
 
@@ -34,21 +37,41 @@
 (setq aidermacs-program "claude-internal")
 (setq aidermacs-default-model "claude-sonnet-4-20250514")
 
+;;; Agent-shell: ACP-based native emacs UI for codebuddy / gemini-internal
+;; Internal Gemini binary differs from upstream default ("gemini")
+(with-eval-after-load 'agent-shell
+  (setq agent-shell-google-gemini-acp-command
+        '("gemini-internal" "--experimental-acp")))
+;; CodeBuddy default ("codebuddy" "--acp") matches local install, no override needed
+
 ;;; AI CLI session commands
+;; The launch script may rebind HOME to a config-only directory; AI CLIs read
+;; their tokens from the real HOME, so restore it from REALHOME for subprocesses.
+(defun +ai/run-cli (cmd)
+  "Run CMD in eaf-pyqterminal with HOME restored from REALHOME."
+  (let* ((real-home (or (getenv "REALHOME") (expand-file-name "~")))
+         (process-environment (cons (concat "HOME=" real-home) process-environment)))
+    (eaf-pyqterminal-run-command-in-dir cmd default-directory t)))
+
 (defun +ai/claude-internal ()
   "Start a new claude-internal session in eaf-pyqterminal."
   (interactive)
-  (eaf-pyqterminal-run-command-in-dir "claude-internal" default-directory t))
+  (+ai/run-cli "claude-internal"))
 
 (defun +ai/gemini-internal ()
   "Start a new gemini-internal session in eaf-pyqterminal."
   (interactive)
-  (eaf-pyqterminal-run-command-in-dir "gemini-internal --experimental-acp" default-directory t))
+  (+ai/run-cli "gemini-internal --experimental-acp"))
 
 (defun +ai/codex-internal ()
   "Start a new codex-internal session in eaf-pyqterminal."
   (interactive)
-  (eaf-pyqterminal-run-command-in-dir "codex-internal" default-directory t))
+  (+ai/run-cli "codex-internal"))
+
+(defun +ai/codebuddy ()
+  "Start a new codebuddy session in eaf-pyqterminal."
+  (interactive)
+  (+ai/run-cli "codebuddy"))
 
 ;;; Interactive commands
 (defun +ai/chat ()
@@ -72,10 +95,14 @@
     (kbd ",an") #'+ai/claude-internal
     (kbd ",ag") #'+ai/gemini-internal
     (kbd ",ax") #'+ai/codex-internal
+    (kbd ",ab") #'+ai/codebuddy
     (kbd ",ac") #'+ai/chat
     (kbd ",as") #'+ai/send-region
     (kbd ",aa") #'+ai/aider
-    (kbd ",ar") #'gptel-rewrite))
+    (kbd ",ar") #'gptel-rewrite
+    (kbd ",aAs") #'agent-shell
+    (kbd ",aAc") #'agent-shell-codebuddy-start-agent
+    (kbd ",aAg") #'agent-shell-google-start-gemini))
 
 (provide 'init-fsai)
 ;;; init-fsai.el ends here
