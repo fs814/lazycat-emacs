@@ -11,6 +11,8 @@
 
 (setq fsdir-selfdoom-dir (concat fsdir-base-dir "sourcecode/doom-emacs/"))
 (setq fsdir-selfdoom-modules-dir (concat fsdir-selfdoom-dir "modules/"))
+(setq fsdir-sourcecode-editor-zed-dir (concat fsdir-base-dir "sourcecode/editor/zed/"))
+(setq fsdir-sourcecode-editor-zed-dir (concat fsdir-base-dir "sourcecode/editor/zed/"))
 
 (setq fsdir-download-dir fsdir-base-dir)
 (setq fsdir-storage-dir (expand-file-name "~/storage/"))

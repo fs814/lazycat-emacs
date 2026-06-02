@@ -19,6 +19,8 @@
 (global-set-key (kbd "C-x g M") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcenew/myproject/MonoRepo/"))))
 (global-set-key (kbd "C-x g C") (lambda () (interactive) (+magit-status-in (expand-file-name "~/.local/share/chezmoi/"))))
 (global-set-key (kbd "C-x g w") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/myproject/llmwiki/"))))
+(global-set-key (kbd "C-x g z") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/editor/zed/"))))
+(global-set-key (kbd "C-x g z") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/editor/zed/"))))
 
 ;;; Evil keybindings for git and crunner
 (with-eval-after-load 'evil
@@ -33,6 +35,7 @@
     (kbd ",gx") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcenew/myproject/cleancode/")))
     (kbd ",gM") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcenew/myproject/MonoRepo/")))
     (kbd ",gC") (lambda () (interactive) (+magit-status-in (expand-file-name "~/.local/share/chezmoi/")))
-    (kbd ",gw") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/myproject/llmwiki/")))))
+    (kbd ",gw") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/myproject/llmwiki/")))
+    (kbd ",gz") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/editor/zed/")))))
 
 (provide 'init-keymappings)

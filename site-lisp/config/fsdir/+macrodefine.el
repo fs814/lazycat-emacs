@@ -37,6 +37,8 @@
 (fsdir-goto-define "sourcecode" fsdir-sourcecode-dir)
 (fsdir-goto-define "editor-emacs" fsdir-sourcecode-editor-emacs-dir)
 (fsdir-goto-define "editor-vim" fsdir-sourcecode-editor-vim-dir)
+(fsdir-goto-define "editor-zed" fsdir-sourcecode-editor-zed-dir)
+(fsdir-goto-define "editor-zed" fsdir-sourcecode-editor-zed-dir)
 (fsdir-goto-define "gameengine-unrealengine" fsdir-sourcecode-gameengine-unrealengine-dir)
 (fsdir-goto-define "sourcecode-linuxwin" fsdir-sourcecode-linuxwin-dir)
 (fsdir-goto-define "vimconf-spacevim" fsdir-sourcecode-vimconf-spacevim-dir)

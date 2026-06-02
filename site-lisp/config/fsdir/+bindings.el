@@ -49,7 +49,8 @@
  ("\C-xGu" . +fsdir/goto-gameengine-unrealengine-dir)
  ("\C-xGv" . +fsdir/goto-editor-vim-dir)
  ("\C-xGV" . +fsdir/goto-vimconf-spacevim-dir)
- ("\C-xGz" . +fsdir/goto-zsh-dir)
+ ("\C-xGz" . +fsdir/goto-editor-zed-dir)
+ ("\C-xGZ" . +fsdir/goto-zsh-dir)
 )
 "open-directory")
 
@@ -107,5 +108,6 @@
  "\C-xGv" #'+fsdir/goto-editor-vim-dir
  "\C-xGV" #'+fsdir/goto-vimconf-spacevim-dir
  ;;"\C-xGw" #'+fsdir/goto-stumpwm-dir
- "\C-xGz" #'+fsdir/goto-zsh-dir
+ "\C-xGz" #'+fsdir/goto-editor-zed-dir
+ "\C-xGZ" #'+fsdir/goto-zsh-dir
  "<f1>c"  #'fsdir-cheatsheet-keyword)
