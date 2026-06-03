@@ -22,6 +22,7 @@
 (fsdir-filelist "config")
 (fsdir-setq "config" "hlissner" (concat fsdir-sourcecode-dir "emacsconf/hlissner/"))
 (fsdir-setq "config" "hlissner-doom" (concat fsdir-config-hlissner-dir ".doom.d/"))
+(fsdir-setq "config" "lazycat-emacs" (concat fsdir-sourcecode-dir "emacsconf/lazycat-emacs/"))
 
 ;;(provide '+config)
 ;;; +config.el ends here

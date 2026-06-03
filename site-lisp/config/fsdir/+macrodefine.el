@@ -42,6 +42,10 @@
 (fsdir-goto-define "gameengine-unrealengine" fsdir-sourcecode-gameengine-unrealengine-dir)
 (fsdir-goto-define "sourcecode-linuxwin" fsdir-sourcecode-linuxwin-dir)
 (fsdir-goto-define "vimconf-spacevim" fsdir-sourcecode-vimconf-spacevim-dir)
+(fsdir-goto-define "lunarvim" fsdir-settings-lunarvim-dir)
+(fsdir-goto-define "editor-neovim" fsdir-sourcecode-editor-neovim-dir)
+(fsdir-goto-define "llvm-project" fsdir-llvm-dir)
+(fsdir-goto-define "lazycat-emacs" fsdir-config-lazycat-emacs-dir)
 
 (fsdir-goto-define "sourcenew" fsdir-sourcenew-dir)
 

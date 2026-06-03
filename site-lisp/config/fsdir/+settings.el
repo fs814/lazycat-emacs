@@ -51,6 +51,8 @@
 (fsdir-setq "settings" "spacevimlayers" (concat fsdir-settings-dir "spacevimlayers/"))
 (fsdir-setq "settings" "spacevimlayers-cheat" (concat fsdir-settings-spacevimlayers-dir "cheat/"))
 
+(fsdir-setq "settings" "lunarvim" (concat fsdir-settings-dir "lunarvim/"))
+
 (fsdir-setq "settings" "stumpwm" (concat fsdir-settings-dir "stumpwm/"))
 
 (fsdir-setq "settings" "oldvim" (concat fsdir-settings-dir "vim/"))

@@ -37,6 +37,7 @@
  ("\C-xGd" . +fsdir/goto-doom-dir)
  ("\C-xGD" . +fsdir/goto-docker-dir)
  ("\C-xGe" . +fsdir/goto-editor-emacs-dir)
+ ("\C-xGl" . +fsdir/goto-lazycat-emacs-dir)
  ("\C-xGm" . +fsdir/goto-sourcecode-mobileorg-dir)
  ("\C-xGM" . +fsdir/goto-myproject-monorepo-dir)
  ("\C-xGp" . +fsdir/goto-doom-private-dir)
@@ -47,8 +48,9 @@
  ("\C-xGsS" . +fsdir/goto-sourcenew-dir)
  ("\C-xGS" . +fsdir/goto-settings-dir)
  ("\C-xGu" . +fsdir/goto-gameengine-unrealengine-dir)
- ("\C-xGv" . +fsdir/goto-editor-vim-dir)
- ("\C-xGV" . +fsdir/goto-vimconf-spacevim-dir)
+ ("\C-xGv" . +fsdir/goto-lunarvim-dir)
+ ("\C-xGV" . +fsdir/goto-editor-neovim-dir)
+ ("\C-xGL" . +fsdir/goto-llvm-project-dir)
  ("\C-xGz" . +fsdir/goto-editor-zed-dir)
  ("\C-xGZ" . +fsdir/goto-zsh-dir)
 )
@@ -95,6 +97,7 @@
  "\C-xGd" #'+fsdir/goto-doom-dir
  "\C-xGD" #'+fsdir/goto-docker-dir
  "\C-xGe" #'+fsdir/goto-editor-emacs-dir
+ "\C-xGl" #'+fsdir/goto-lazycat-emacs-dir
  "\C-xGm" #'+fsdir/goto-sourcecode-mobileorg-dir
  "\C-xGM" #'+fsdir/goto-myproject-monorepo-dir
  "\C-xGp" #'+fsdir/goto-doom-private-dir
@@ -105,8 +108,9 @@
  "\C-xGsS" #'+fsdir/goto-sourcenew-dir
  "\C-xGS" #'+fsdir/goto-settings-dir
  "\C-xGu" #'+fsdir/goto-gameengine-unrealengine-dir
- "\C-xGv" #'+fsdir/goto-editor-vim-dir
- "\C-xGV" #'+fsdir/goto-vimconf-spacevim-dir
+ "\C-xGv" #'+fsdir/goto-lunarvim-dir
+ "\C-xGV" #'+fsdir/goto-editor-neovim-dir
+ "\C-xGL" #'+fsdir/goto-llvm-project-dir
  ;;"\C-xGw" #'+fsdir/goto-stumpwm-dir
  "\C-xGz" #'+fsdir/goto-editor-zed-dir
  "\C-xGZ" #'+fsdir/goto-zsh-dir
