@@ -42,4 +42,7 @@
     (kbd ",gw") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/myproject/llmwiki/")))
     (kbd ",gz") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/editor/zed/")))))
 
+;;; Find file in project (mirror VSCode's ctrl+x p quickOpen)
+(global-set-key (kbd "C-x p") #'projectile-find-file)
+
 (provide 'init-keymappings)

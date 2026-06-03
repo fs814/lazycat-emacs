@@ -41,7 +41,11 @@
 ;; Internal Gemini binary differs from upstream default ("gemini")
 (with-eval-after-load 'agent-shell
   (setq agent-shell-google-gemini-acp-command
-        '("gemini-internal" "--experimental-acp")))
+        '("gemini-internal" "--experimental-acp"))
+  ;; Claude Code speaks ACP via the @zed-industries/claude-code-acp bridge
+  ;; (binary `claude-code-acp`); the `claude` CLI itself has no --acp flag.
+  (setq agent-shell-anthropic-claude-acp-command
+        '("claude-code-acp")))
 ;; CodeBuddy default ("codebuddy" "--acp") matches local install, no override needed
 
 ;;; AI CLI session commands
@@ -144,7 +148,8 @@
     (kbd ",ar") #'gptel-rewrite
     (kbd ",aAs") #'agent-shell
     (kbd ",aAc") #'agent-shell-codebuddy-start-agent
-    (kbd ",aAg") #'agent-shell-google-start-gemini)
+    (kbd ",aAg") #'agent-shell-google-start-gemini
+    (kbd ",aAl") #'agent-shell-anthropic-start-claude-code)
   (evil-define-key 'visual 'global
     (kbd ",aAE") #'+ai/explain-code
     (kbd ",aAD") #'+ai/add-comments

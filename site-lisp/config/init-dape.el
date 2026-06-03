@@ -156,39 +156,45 @@
   (interactive)
   (compile (format "crunner run %s" (shell-quote-argument (buffer-file-name)))))
 
-;;; Unreal Engine debug target selector
+;;; Native debug target selector (Zed / Unreal Engine)
 (defun +crunner-unreal-debug ()
-  "Select and launch an Unreal Engine debug target via dape."
+  "Select and launch a native debug target (Zed / Unreal Engine) via dape."
   (interactive)
   (let* ((unreal-dir (cond
                       ((file-directory-p "/Users/fs814/sourcecode/gameengine/UnrealEngine")
                        "/Users/fs814/sourcecode/gameengine/UnrealEngine")
                       ((file-directory-p "/Users/fs814/sourcenew/gameengine/UnrealEngine")
                        "/Users/fs814/sourcenew/gameengine/UnrealEngine")
-                      (t (user-error "UnrealEngine directory not found"))))
+                      (t nil)))
          (targets
-          `(("UE5BlankCpp Editor"
-             :program "/Users/fs814/sourcecode/gameengine/UE5BlankCpp/Binaries/Mac/UE5BlankCppEditor-Mac-Debug.app/Contents/MacOS/UE5BlankCppEditor-Mac-Debug"
-             :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5BlankCpp.uproject"]
-             :cwd ,unreal-dir)
-            ("UE5First (UnrealEditor)"
-             :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
-             :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5First.uproject"]
-             :cwd ,unreal-dir)
-            ("UE5Third (UnrealEditor)"
-             :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
-             :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5Third.uproject"]
-             :cwd ,unreal-dir)
-            ("UnrealEditor (standalone)"
-             :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
-             :args []
-             :cwd ,unreal-dir)
-            ("SlateViewer"
-             :program ,(concat unreal-dir "/Engine/Binaries/Mac/SlateViewer-Mac-Debug")
-             :args []
-             :cwd ,unreal-dir)))
+          (append
+           `(("Zed (debug)"
+              :program "/Users/fs814/sourcecode/editor/zed/target/debug/zed"
+              :args []
+              :cwd "/Users/fs814/sourcecode/editor/zed"))
+           (when unreal-dir
+             `(("UE5BlankCpp Editor"
+                :program "/Users/fs814/sourcecode/gameengine/UE5BlankCpp/Binaries/Mac/UE5BlankCppEditor-Mac-Debug.app/Contents/MacOS/UE5BlankCppEditor-Mac-Debug"
+                :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5BlankCpp.uproject"]
+                :cwd ,unreal-dir)
+               ("UE5First (UnrealEditor)"
+                :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
+                :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5First.uproject"]
+                :cwd ,unreal-dir)
+               ("UE5Third (UnrealEditor)"
+                :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
+                :args ["/Users/fs814/sourcecode/gameengine/UE5BlankCpp/UE5Third.uproject"]
+                :cwd ,unreal-dir)
+               ("UnrealEditor (standalone)"
+                :program ,(concat unreal-dir "/Engine/Binaries/Mac/UnrealEditor-Mac-Debug.app/Contents/MacOS/UnrealEditor-Mac-Debug")
+                :args []
+                :cwd ,unreal-dir)
+               ("SlateViewer"
+                :program ,(concat unreal-dir "/Engine/Binaries/Mac/SlateViewer-Mac-Debug")
+                :args []
+                :cwd ,unreal-dir)))))
          (labels (mapcar #'car targets))
-         (choice (completing-read "Select Unreal debug target: " labels nil t))
+         (choice (completing-read "Select debug target: " labels nil t))
          (target (assoc choice targets))
          (lldb-dap-path
           (cond
