@@ -179,7 +179,21 @@
              ("GIMP (debug)"
               :program "/Users/fs814/sourcecode/arttools/gimp/build-gimp/app/gimp-3.3"
               :args []
-              :cwd "/Users/fs814/sourcecode/arttools/gimp"))
+              :cwd "/Users/fs814/sourcecode/arttools/gimp")
+             ("Clang (debug)"
+              :program "/Users/fs814/fsmyproject/llvm/debug/bin/clang"
+              :args ["-c" "/Users/fs814/sourcenew/myproject/MonoRepo/cmake/helloworld/helloworld.cpp" "-o" "/tmp/helloworld.o"]
+              :cwd "/Users/fs814/sourcenew/myproject/MonoRepo/cmake/helloworld")
+             ("Neovim (debug)"
+              :program "/Users/fs814/fsmyproject/neovim/debug/bin/nvim"
+              :args ["-u" "/Users/fs814/sourcecode/neovimconf/lunarvim/init.lua"]
+              :cwd "/Users/fs814")
+             ("Emacs (debug)"
+              :program "/Users/fs814/sourcecode/editor/emacs-fswork-debug/nextstep/Emacs.app/Contents/MacOS/Emacs"
+              :args []
+              :cwd "/Users/fs814")
+             ("VSCode (debug, attach :5874)"
+              :vscode-attach t))
            (when unreal-dir
              `(("UE5BlankCpp Editor"
                 :program "/Users/fs814/sourcecode/gameengine/UE5BlankCpp/Binaries/Mac/UE5BlankCppEditor-Mac-Debug.app/Contents/MacOS/UE5BlankCppEditor-Mac-Debug"
@@ -211,16 +225,31 @@
            ((file-exists-p "/opt/homebrew/opt/llvm/bin/lldb-dap")
             "/opt/homebrew/opt/llvm/bin/lldb-dap")
            (t (user-error "lldb-dap not found")))))
-    (dape `(modes (c++-mode)
-            command ,lldb-dap-path
-            :type "lldb-dap"
-            :request "launch"
-            :program ,(plist-get (cdr target) :program)
-            :args ,(plist-get (cdr target) :args)
-            :cwd ,(plist-get (cdr target) :cwd)
-            :initCommands ["process handle SIGTRAP -n true -p true -s false"
-                           "process handle SIGBUS  -n true -p true -s false"]
-            :stopOnEntry nil))))
+    (if (plist-get (cdr target) :vscode-attach)
+        ;; VSCode: attach the js-debug (pwa-node) adapter to the inspector on :5874.
+        ;; Run build_vscode_run_debug.sh first so code.sh is listening on 5874.
+        (dape `(modes nil
+                command "node"
+                command-args (,(expand-file-name "~/.local/share/js-debug/src/dapDebugServer.js")
+                              :autoport)
+                command-cwd "/Users/fs814/sourcecode/editor/vscode"
+                port :autoport
+                :type "pwa-node"
+                :request "attach"
+                :port 5874
+                :cwd "/Users/fs814/sourcecode/editor/vscode"
+                :outFiles ["/Users/fs814/sourcecode/editor/vscode/out/**/*.js"]
+                :resolveSourceMapLocations ["/Users/fs814/sourcecode/editor/vscode/out/**/*.js" "!**/node_modules/**"]))
+      (dape `(modes (c++-mode)
+              command ,lldb-dap-path
+              :type "lldb-dap"
+              :request "launch"
+              :program ,(plist-get (cdr target) :program)
+              :args ,(plist-get (cdr target) :args)
+              :cwd ,(plist-get (cdr target) :cwd)
+              :initCommands ["process handle SIGTRAP -n true -p true -s false"
+                             "process handle SIGBUS  -n true -p true -s false"]
+              :stopOnEntry nil)))))
 
 ;;; Keybindings
 ;; F-key bindings (IDE-style)

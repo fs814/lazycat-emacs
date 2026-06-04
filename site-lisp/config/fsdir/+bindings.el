@@ -4,6 +4,8 @@
 (fsdir-goto-define "bin" fsdir-settings-bin-dir)
 (fsdir-goto-define "blender" (expand-file-name "~/sourcecode/arttools/blender/"))
 (fsdir-goto-define "gimp" (expand-file-name "~/sourcecode/arttools/gimp/"))
+(fsdir-goto-define "emacs-fswork-debug" (expand-file-name "~/sourcecode/editor/emacs-fswork-debug/"))
+(fsdir-goto-define "vscode" (expand-file-name "~/sourcecode/editor/vscode/"))
 (fsdir-goto-define "conkeror" fsdir-settings-conkeror-dir)
 (fsdir-goto-define "chezmoi" fsdir-chezmoi-dir)
 (fsdir-goto-define "markdown" fsdir-markdown-dir)
@@ -40,7 +42,8 @@
  ("\C-xGC" . +fsdir/goto-chezmoi-dir)
  ("\C-xGd" . +fsdir/goto-doom-dir)
  ("\C-xGD" . +fsdir/goto-docker-dir)
- ("\C-xGe" . +fsdir/goto-editor-emacs-dir)
+ ("\C-xGE" . +fsdir/goto-editor-emacs-dir)
+ ("\C-xGe" . +fsdir/goto-emacs-fswork-debug-dir)
  ("\C-xGl" . +fsdir/goto-lazycat-emacs-dir)
  ("\C-xGm" . +fsdir/goto-sourcecode-mobileorg-dir)
  ("\C-xGM" . +fsdir/goto-myproject-monorepo-dir)
@@ -54,6 +57,8 @@
  ("\C-xGu" . +fsdir/goto-gameengine-unrealengine-dir)
  ("\C-xGv" . +fsdir/goto-lunarvim-dir)
  ("\C-xGV" . +fsdir/goto-editor-neovim-dir)
+ ("\C-xGn" . +fsdir/goto-editor-neovim-dir)
+ ("\C-xGo" . +fsdir/goto-vscode-dir)
  ("\C-xGL" . +fsdir/goto-llvm-project-dir)
  ("\C-xGz" . +fsdir/goto-editor-zed-dir)
  ("\C-xGZ" . +fsdir/goto-zsh-dir)
@@ -102,7 +107,8 @@
  "\C-xGC" #'+fsdir/goto-chezmoi-dir
  "\C-xGd" #'+fsdir/goto-doom-dir
  "\C-xGD" #'+fsdir/goto-docker-dir
- "\C-xGe" #'+fsdir/goto-editor-emacs-dir
+ "\C-xGE" #'+fsdir/goto-editor-emacs-dir
+ "\C-xGe" #'+fsdir/goto-emacs-fswork-debug-dir
  "\C-xGl" #'+fsdir/goto-lazycat-emacs-dir
  "\C-xGm" #'+fsdir/goto-sourcecode-mobileorg-dir
  "\C-xGM" #'+fsdir/goto-myproject-monorepo-dir
@@ -116,6 +122,8 @@
  "\C-xGu" #'+fsdir/goto-gameengine-unrealengine-dir
  "\C-xGv" #'+fsdir/goto-lunarvim-dir
  "\C-xGV" #'+fsdir/goto-editor-neovim-dir
+ "\C-xGn" #'+fsdir/goto-editor-neovim-dir
+ "\C-xGo" #'+fsdir/goto-vscode-dir
  "\C-xGL" #'+fsdir/goto-llvm-project-dir
  ;;"\C-xGw" #'+fsdir/goto-stumpwm-dir
  "\C-xGz" #'+fsdir/goto-editor-zed-dir
