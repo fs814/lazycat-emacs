@@ -171,7 +171,15 @@
            `(("Zed (debug)"
               :program "/Users/fs814/sourcecode/editor/zed/target/debug/zed"
               :args []
-              :cwd "/Users/fs814/sourcecode/editor/zed"))
+              :cwd "/Users/fs814/sourcecode/editor/zed")
+             ("Blender (debug)"
+              :program "/Users/fs814/sourcecode/arttools/build_darwin_debug/bin/Blender.app/Contents/MacOS/Blender"
+              :args []
+              :cwd "/Users/fs814/sourcecode/arttools/build_darwin_debug")
+             ("GIMP (debug)"
+              :program "/Users/fs814/sourcecode/arttools/gimp/build-gimp/app/gimp-3.3"
+              :args []
+              :cwd "/Users/fs814/sourcecode/arttools/gimp"))
            (when unreal-dir
              `(("UE5BlankCpp Editor"
                 :program "/Users/fs814/sourcecode/gameengine/UE5BlankCpp/Binaries/Mac/UE5BlankCppEditor-Mac-Debug.app/Contents/MacOS/UE5BlankCppEditor-Mac-Debug"

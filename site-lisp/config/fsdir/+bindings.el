@@ -2,6 +2,8 @@
 
 (fsdir-goto-define "settings" fsdir-settings-dir)
 (fsdir-goto-define "bin" fsdir-settings-bin-dir)
+(fsdir-goto-define "blender" (expand-file-name "~/sourcecode/arttools/blender/"))
+(fsdir-goto-define "gimp" (expand-file-name "~/sourcecode/arttools/gimp/"))
 (fsdir-goto-define "conkeror" fsdir-settings-conkeror-dir)
 (fsdir-goto-define "chezmoi" fsdir-chezmoi-dir)
 (fsdir-goto-define "markdown" fsdir-markdown-dir)
@@ -31,7 +33,9 @@
 (lazy-load-global-keys
 '(
   ("\C-xGa" . +fsdir/goto-myproject-art-dir)
- ("\C-xGb" . +fsdir/goto-bin-dir)
+ ("\C-xGb" . +fsdir/goto-blender-dir)
+ ("\C-xGg" . +fsdir/goto-gimp-dir)
+ ("\C-xGB" . +fsdir/goto-bin-dir)
  ("\C-xGc" . +fsdir/goto-conkeror-dir)
  ("\C-xGC" . +fsdir/goto-chezmoi-dir)
  ("\C-xGd" . +fsdir/goto-doom-dir)
@@ -91,7 +95,9 @@
  "C-x O U" #'+fsdir/open-unrealengine-dir
 
  "\C-xGa" #'+fsdir/goto-myproject-art-dir
- "\C-xGb" #'+fsdir/goto-bin-dir
+ "\C-xGb" #'+fsdir/goto-blender-dir
+ "\C-xGg" #'+fsdir/goto-gimp-dir
+ "\C-xGB" #'+fsdir/goto-bin-dir
  "\C-xGc" #'+fsdir/goto-conkeror-dir
  "\C-xGC" #'+fsdir/goto-chezmoi-dir
  "\C-xGd" #'+fsdir/goto-doom-dir

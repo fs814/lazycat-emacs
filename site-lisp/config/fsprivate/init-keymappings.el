@@ -8,6 +8,8 @@
   (let ((default-directory dir))
     (magit-status)))
 
+(global-set-key (kbd "C-x g b") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/blender/"))))
+(global-set-key (kbd "C-x g g") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/gimp/"))))
 (global-set-key (kbd "C-x g c") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/Settings/"))))
 (global-set-key (kbd "C-x g d") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/doom-emacs/"))))
 (global-set-key (kbd "C-x g e") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/gameengine/UnrealEngine/"))))
@@ -27,6 +29,8 @@
 ;;; Evil keybindings for git and crunner
 (with-eval-after-load 'evil
   (evil-define-key 'normal 'global
+    (kbd ",gb") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/blender/")))
+    (kbd ",gg") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/gimp/")))
     (kbd ",gc") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/Settings/")))
     (kbd ",gd") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/doom-emacs/")))
     (kbd ",ge") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/gameengine/UnrealEngine/")))
