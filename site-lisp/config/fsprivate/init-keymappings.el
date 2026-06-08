@@ -32,6 +32,7 @@
 ;;; Evil keybindings for git and crunner
 (with-eval-after-load 'evil
   (evil-define-key 'normal 'global
+    (kbd ",,") #'dired-jump
     (kbd ",gb") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/blender/")))
     (kbd ",gg") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/arttools/gimp/")))
     (kbd ",gc") (lambda () (interactive) (+magit-status-in (expand-file-name "~/sourcecode/Settings/")))
