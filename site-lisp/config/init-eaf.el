@@ -106,6 +106,19 @@
 
 ;;; Code:
 
+;; EAF's macOS activation uses `open -a emacs', which can launch another
+;; Emacs.app without this process's Lazycat startup arguments. Focus our
+;; existing frame through Emacs's native API instead of Launch Services.
+(defun fs-eaf-focus-existing-frame ()
+  "Focus the current graphical Emacs frame without launching an app."
+  (let ((frame (selected-frame)))
+    (when (and (frame-live-p frame) (display-graphic-p frame))
+      (select-frame-set-input-focus frame t))))
+
+(when (eq system-type 'darwin)
+  (advice-add 'eaf--activate-emacs-mac-window :override
+              #'fs-eaf-focus-existing-frame))
+
 ;; You need configuration your own local proxy program first.
 ;; (setq eaf-proxy-type "socks5")
 ;; (setq eaf-proxy-host "127.0.0.1")

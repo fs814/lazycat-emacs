@@ -56,4 +56,10 @@
 ;;; Find file in project (mirror VSCode's ctrl+x p quickOpen)
 (global-set-key (kbd "C-x p") #'projectile-find-file)
 
+;;; Quit (restore the standard Emacs/Doom chord disabled by init-key.el)
+;; This uses Emacs's save prompts and preserves emacsclient/daemon behavior.
+(global-set-key (kbd "C-x C-c") #'save-buffers-kill-terminal)
+;; Match Doom's confirmation without depending on Doom-only quit functions.
+(setq confirm-kill-emacs #'yes-or-no-p)
+
 (provide 'init-keymappings)
