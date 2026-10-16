@@ -5,4 +5,6 @@
     (setq blink-search-file-manager 'dired)
   )
 
+(require 'init-fsetaf)
+
 (provide 'init-fsprivate)
